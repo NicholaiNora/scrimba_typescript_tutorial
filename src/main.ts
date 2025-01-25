@@ -12,20 +12,20 @@ type Order = {
   status: Status;
 };
 
-const menu: Pizza[] = [
-  { id: 1, name: "Margherita", price: 8 },
-  { id: 2, name: "Pepperoni", price: 10 },
-  { id: 3, name: "Hawaiian", price: 10 },
-  { id: 4, name: "Veggie", price: 9 },
-];
-
 let cashInRegister = 100;
 let nextPizzaId = 1;
 let nextOrderId = 1;
 
+const menu: Pizza[] = [
+  { id: nextPizzaId++, name: "Margherita", price: 8 },
+  { id: nextPizzaId++, name: "Pepperoni", price: 10 },
+  { id: nextPizzaId++, name: "Hawaiian", price: 10 },
+  { id: nextPizzaId++, name: "Veggie", price: 9 },
+];
+
 const orderQueue: Order[] = [];
 
-function addNewPizza(pizzaObj: Omit<Pizza, "id">): Pizza {
+function addNewPizza(pizzaObj: Omit<Pizza, "id">): Pizza | undefined {
   const pizza: Pizza = { id: nextPizzaId++, ...pizzaObj };
   menu.push(pizza);
   return pizza;
